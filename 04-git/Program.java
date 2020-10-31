@@ -10,3 +10,4 @@
         numberOfCogs = noCogs;
     }
 }
+//zmiana nr3
