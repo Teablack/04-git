@@ -12,4 +12,3 @@ public class Cogwheel1 {
         numberOfCogs = noCogs;
     }
 }
-//zmiana nr3
