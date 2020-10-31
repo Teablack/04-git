@@ -1,11 +1,13 @@
-public class Cogwheel {
+//komentarz
+public class Cogwheel1 {
+
     private int size;
     private int numberOfCogs;
 
-    public Cogwheel() {
+    public Cogwheel1() {
     }
 
-    public Cogwheel(int size, int noCogs) {
+    public Cogwheel1(int size, int noCogs) {
         this.size = size;
         numberOfCogs = noCogs;
     }
