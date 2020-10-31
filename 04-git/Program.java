@@ -12,3 +12,4 @@ public class Cogwheel1 {
         numberOfCogs = noCogs;
     }
 }
+// i jeszcze zmiana
