@@ -22,7 +22,7 @@ public class ExpenseRepositoryTest {
     private List<Expense> expenses;
 
     @Test
-    void TestLoadExpenses(){
+    void testLoadExpenses(){
         MyDatabase db = new MyDatabase();
         expenseRepository = new ExpenseRepository(db);
         expenseRepository.loadExpenses();
@@ -30,7 +30,7 @@ public class ExpenseRepositoryTest {
     }
 
     @Test
-    void TestLoadExpenses2(){
+    void testLoadExpenses2(){
         //Tworzenie
         IFancyDatabase mockedDB = mock(IFancyDatabase.class);
         InOrder inOrder = inOrder(mockedDB);
@@ -47,7 +47,7 @@ public class ExpenseRepositoryTest {
         }
 
     @Test
-    void TestsaveExpenses() {
+    void testSaveExpenses() {
         //Tworzenie
         IFancyDatabase mockedDB = mock(IFancyDatabase.class);
         InOrder inOrder = inOrder(mockedDB);

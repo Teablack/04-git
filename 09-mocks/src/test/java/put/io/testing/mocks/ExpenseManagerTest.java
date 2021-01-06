@@ -30,7 +30,7 @@ public class ExpenseManagerTest {
     }
 
     @Test
-    void TestCalculateTotal() {
+    void testCalculateTotal() {
         IExpenseRepository expenseRepositoryMocked = mock(IExpenseRepository.class);
 
         when(expenseRepositoryMocked.getExpenses()).thenReturn(expenses);
@@ -39,15 +39,13 @@ public class ExpenseManagerTest {
 
         ExpenseManager expenseManager = new ExpenseManager(expenseRepositoryMocked, fancyServiceMocked);
 
-        InOrder inOrder = inOrder(expenseRepositoryMocked,fancyServiceMocked);
-
-        inOrder.verify(expenseRepositoryMocked).getExpenses();
+        InOrder inOrder = inOrder(expenseRepositoryMocked);
 
         assertEquals(9, expenseManager.calculateTotal());
     }
 
     @Test
-    void TestCalculateTotalForCategory() {
+    void testCalculateTotalForCategory() {
         IExpenseRepository expenseRepositoryMocked = mock(IExpenseRepository.class);
         FancyService fancyServiceMocked = mock(FancyService.class);
 
@@ -64,7 +62,7 @@ public class ExpenseManagerTest {
     }
 
     @Test
-    void TestCalculateTotalInDollars() throws ConnectException {
+    void testCalculateTotalInDollars() throws ConnectException {
         IExpenseRepository expenseRepositoryMocked = mock(IExpenseRepository.class);
         FancyService fancyServiceMocked = mock(FancyService.class);
 
