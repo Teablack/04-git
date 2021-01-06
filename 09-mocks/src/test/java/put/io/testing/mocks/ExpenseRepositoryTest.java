@@ -22,7 +22,15 @@ public class ExpenseRepositoryTest {
     private List<Expense> expenses;
 
     @Test
-    void loadExpensesTest(){
+    void TestLoadExpenses(){
+        MyDatabase db = new MyDatabase();
+        expenseRepository = new ExpenseRepository(db);
+        expenseRepository.loadExpenses();
+        assertEquals(0, expenseRepository.getExpenses().size());
+    }
+
+    @Test
+    void TestLoadExpenses2(){
         //Tworzenie
         IFancyDatabase mockedDB = mock(IFancyDatabase.class);
         InOrder inOrder = inOrder(mockedDB);
@@ -39,7 +47,7 @@ public class ExpenseRepositoryTest {
         }
 
     @Test
-    void saveExpensesTest() {
+    void TestsaveExpenses() {
         //Tworzenie
         IFancyDatabase mockedDB = mock(IFancyDatabase.class);
         InOrder inOrder = inOrder(mockedDB);
@@ -50,8 +58,9 @@ public class ExpenseRepositoryTest {
         IntStream.range(0, 5).forEach(i -> expenseRepository.addExpense(new Expense()));
         expenseRepository.saveExpenses();
         //Weryfikacja
-        verify(mockedDB, times(5)).persist(any(Expense.class));
+
         inOrder.verify(mockedDB).connect();
+        inOrder.verify(mockedDB, times(5)).persist(any(Expense.class));
         inOrder.verify(mockedDB).close();
     }
 

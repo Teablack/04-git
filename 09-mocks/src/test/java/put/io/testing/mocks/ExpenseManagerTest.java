@@ -2,6 +2,7 @@ package put.io.testing.mocks;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.mockito.InOrder;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import put.io.students.fancylibrary.service.FancyService;
@@ -14,8 +15,7 @@ import java.util.stream.IntStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class ExpenseManagerTest {
 
@@ -30,18 +30,24 @@ public class ExpenseManagerTest {
     }
 
     @Test
-    void calculateTotalTest() {
+    void TestCalculateTotal() {
         IExpenseRepository expenseRepositoryMocked = mock(IExpenseRepository.class);
+
         when(expenseRepositoryMocked.getExpenses()).thenReturn(expenses);
 
         FancyService fancyServiceMocked = mock(FancyService.class);
+
         ExpenseManager expenseManager = new ExpenseManager(expenseRepositoryMocked, fancyServiceMocked);
+
+        InOrder inOrder = inOrder(expenseRepositoryMocked,fancyServiceMocked);
+
+        inOrder.verify(expenseRepositoryMocked).getExpenses();
 
         assertEquals(9, expenseManager.calculateTotal());
     }
 
     @Test
-    void calculateTotalForCategoryTest() {
+    void TestCalculateTotalForCategory() {
         IExpenseRepository expenseRepositoryMocked = mock(IExpenseRepository.class);
         FancyService fancyServiceMocked = mock(FancyService.class);
 
@@ -58,7 +64,7 @@ public class ExpenseManagerTest {
     }
 
     @Test
-    void calculateTotalInDollarsTest() throws ConnectException {
+    void TestCalculateTotalInDollars() throws ConnectException {
         IExpenseRepository expenseRepositoryMocked = mock(IExpenseRepository.class);
         FancyService fancyServiceMocked = mock(FancyService.class);
 
@@ -69,10 +75,10 @@ public class ExpenseManagerTest {
 
             public Object answer(InvocationOnMock invocationOnMock) throws Throwable {
                 Object[] args = invocationOnMock.getArguments();
-                return (Double) args[0] / 4;
+                return (Double) args[0] * 4;
             }
         });
         expenseManager.calculateTotalInDollars();
-        assertEquals(2, expenseManager.calculateTotalInDollars());
+        assertEquals(36, expenseManager.calculateTotalInDollars());
     }
 }
