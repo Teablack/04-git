@@ -65,7 +65,7 @@ public class AccountsPageObjectAT {
         mainPage.openPage();
         assertTrue(mainPage.isOnPageNotLoggedIn());
         mainMenu.clickRegisterLink();
-        assertTrue(registrationPage.isOnPage();
+        assertTrue(registrationPage.isOnPage());
         registrationPage.registerUser("Jan","qwerty","qwerty","Jan Kowalski","ul. Nowa 10");
         loginPage.isOnPage();
         loginPage.loginUser("Jan","qwerty");
