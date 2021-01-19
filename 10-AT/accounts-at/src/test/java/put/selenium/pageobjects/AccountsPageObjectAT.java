@@ -63,9 +63,9 @@ public class AccountsPageObjectAT {
     @Test
     public void successfulUserRegistration() throws Exception {
         mainPage.openPage();
-        assertEquals(mainPage.isOnPageNotLoggedIn(),true);
+        assertTrue(mainPage.isOnPageNotLoggedIn());
         mainMenu.clickRegisterLink();
-        assertEquals(registrationPage.isOnPage(),true);
+        assertTrue(registrationPage.isOnPage();
         registrationPage.registerUser("Jan","qwerty","qwerty","Jan Kowalski","ul. Nowa 10");
         loginPage.isOnPage();
         loginPage.loginUser("Jan","qwerty");
