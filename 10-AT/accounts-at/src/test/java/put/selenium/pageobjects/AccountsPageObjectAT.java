@@ -69,7 +69,7 @@ public class AccountsPageObjectAT {
         registrationPage.registerUser("Jan","qwerty","qwerty","Jan Kowalski","ul. Nowa 10");
         loginPage.isOnPage();
         loginPage.loginUser("Jan","qwerty");
-        assertEquals(loggedInUserInfo.getUserInformation(),"Jan Kowalski, ul. Nowa 10");
+        assertEquals("Jan Kowalski, ul. Nowa 10",loggedInUserInfo.getUserInformation());
     }
 
 
