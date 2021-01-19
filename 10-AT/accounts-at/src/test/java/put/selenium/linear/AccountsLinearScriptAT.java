@@ -51,13 +51,7 @@ public class AccountsLinearScriptAT {
         driver.findElement(By.name("addressData")).sendKeys("myaddress@gmail.com");
         driver.findElement(By.name("submit")).click();
         assertEquals("Login", driver.findElement(By.xpath("//div[@id='contentSingle']/h3")).getText());
-        driver.findElement(By.name("username")).click();
-        driver.findElement(By.name("username")).clear();
-        driver.findElement(By.name("username")).sendKeys("username");
-        driver.findElement(By.name("password")).click();
-        driver.findElement(By.name("password")).clear();
-        driver.findElement(By.name("password")).sendKeys("qwerty");
-        driver.findElement(By.name("submit")).click();
+      
         assertEquals("Daria Poda, myaddress@gmail.com", driver.findElement(By.xpath("//div[@id='container']/div[2]")).getText());
     }
 
